@@ -39,40 +39,45 @@ ApplicationWindow {
             id: ufo_Menu_1
 
             title: qsTr("File")
-            topMargin: 28
-            leftMargin: 0
-            spacing: -1
+            topMargin: 40
+            leftMargin: 4
 
             UFO_MenuItem {
                 id: ufo_MenuItem_1
 
+                leftPadding: 10
+                rightPadding: 10
                 text: qsTr("New Document")
             }
 
             UFO_MenuItem {
                 id: ufo_MenuItem_2
 
+                leftPadding: 10
+                rightPadding: 10
                 text: qsTr("Open File or Folder")
             }
 
             UFO_MenuSeparator {
                 id: ufo_MenuSeparator_1
 
-                leftPadding: 6
-                rightPadding: 6
+                leftPadding: 10
+                rightPadding: 10
             }
 
             UFO_MenuItem {
                 id: ufo_MenuItem_3
 
-                text: qsTr("Save As...")
-
                 leftPadding: 10
+                rightPadding: 10
+                text: qsTr("Save As...")
             }
 
             UFO_MenuItem {
                 id: ufo_MenuItem_4
 
+                leftPadding: 10
+                rightPadding: 10
                 text: qsTr("Check Me")
                 checkable: true
                 checked: true
@@ -94,13 +99,15 @@ ApplicationWindow {
             UFO_MenuSeparator {
                 id: ufo_MenuSeparator_2
 
-                leftPadding: 6
-                rightPadding: 6
+                leftPadding: 10
+                rightPadding: 10
             }
 
             UFO_MenuItem {
                 id: ufo_MenuItem_5
 
+                leftPadding: 10
+                rightPadding: 10
                 text: qsTr("Quit")
             }
         }

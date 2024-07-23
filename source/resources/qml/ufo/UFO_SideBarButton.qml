@@ -12,6 +12,7 @@ TabButton {
     property alias svg: iconImage_1.source
     property int svgWidth: 24
     property int svgHeight: 24
+    property int borderRadius: 4
 
     implicitWidth: 120
     implicitHeight: 35
@@ -87,6 +88,8 @@ TabButton {
 
     background: Rectangle {
         id: rectangle_1
+
+        radius: borderRadius
 
         color: {
             if(root.checked) {

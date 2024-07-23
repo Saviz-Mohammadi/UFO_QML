@@ -41,8 +41,8 @@
 
     "UFO_SideBarSeparator": "Color_Light_8",
 
-    "UFO_Page_Title": "Color_Dark_5",
-    "UFO_Page_Background": "Color_Dark_2",
+    "UFO_Page_Title": "Color_Light_4",
+    "UFO_Page_Background": "Color_Dark_3",
 
     "UFO_GroupBox_Title": "Color_Light_4",
     "UFO_GroupBox_Text": "Color_Light_4",
@@ -57,11 +57,11 @@
 
     "UFO_ComboBox_Item_Text": "Color_Dark_5",
     "UFO_ComboBox_Item_Background_Normal": "Color_Light_6",
-    "UFO_ComboBox_Item_Background_Highlighted": "Color_Light_6",
+    "UFO_ComboBox_Item_Background_Highlighted": "Color_Light_8",
 
     "UFO_ComboBox_Arrow_Background_Normal": "Color_Dark_5",
     "UFO_ComboBox_Arrow_Background_Pressed": "Color_Dark_5",
 
-    "UFO_ComboBox_DropBox_Border": "Color_Dark_5",
+    "UFO_ComboBox_DropBox_Border": "Color_Light_6",
     "UFO_ComboBox_Popup_Background": "Color_Light_6"
 }

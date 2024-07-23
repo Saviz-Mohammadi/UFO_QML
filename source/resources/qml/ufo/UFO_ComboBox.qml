@@ -13,6 +13,7 @@ ComboBox {
         id: itemDelegate_1
 
         width: root.width
+        height: 30
 
         contentItem: Text {
             id: text_1
@@ -27,6 +28,8 @@ ComboBox {
 
         background: Rectangle {
             id: rectangle_1
+
+            radius: 4
 
             width: root.width
             color: itemDelegate_1.highlighted ? Qt.color(AppTheme.Colors["UFO_ComboBox_Item_Background_Highlighted"]) : Qt.color(AppTheme.Colors["UFO_ComboBox_Item_Background_Normal"])
@@ -90,11 +93,11 @@ ComboBox {
     popup: Popup {
         id: popup_1
 
-        y: root.height - 1
+        y: root.height + 3
         width: root.width
         implicitHeight: contentItem.implicitHeight
 
-        padding: 1
+        padding: 0
 
         contentItem: ListView {
             id: listView_1
