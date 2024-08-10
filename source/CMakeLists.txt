@@ -1,13 +1,3 @@
-# I find Modules and other new concepts in Qt/QML very challenging to grasp
-# and somewhat unreliable. As a result, I mostly depend on my own
-# straightforward methods for creating a Qt/QML project. Moreover, I've
-# found the documentation to be quite inadequate.
-
-# However, if you're keen on exploring these new concepts, there's an
-# interesting blog post that provides better explanations:
-
-# https://www.basyskom.de/en/2024/how-to-use-modern-qml-tooling-in-practice/
-
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
 
@@ -15,11 +5,11 @@ cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 
-project("QML_Project"
+project("UFO_QML"
 
     VERSION 0.0.1
 
-    DESCRIPTION "QML_Project description"
+    DESCRIPTION "A simple template for creating QML applications"
 
     LANGUAGES CXX)
 
@@ -119,93 +109,67 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY	# Defines static lib path
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 
-set(BASE_RESOURCE_LOCATION
+
+# This determines the base location where CMake can expect to find your resources.
+# Relative paths of where your filse can be found in the output location are deterimned based of this.
+set(RESOURCE_BASE_ORIGIN_LOCATION
 
     "${CMAKE_SOURCE_DIR}/resources")
 
+# This determines where your base resources location in the final build will endup locating.
+set(RESOURCE_BASE_DESTINATION_LOCATION
 
-set(BASE_TXT_LOCATION
-
-    "${BASE_RESOURCE_LOCATION}/txt")
-
-
-set(BASE_JSON_LOCATION
-
-    "${BASE_RESOURCE_LOCATION}/json")
+    "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/resources")
 
 
-set(BASE_ICON_LOCATION
+# Make sure to prefix the path with ${RESOURCE_BASE_ORIGIN_LOCATION}.
+set(RESOURCE_FILES
 
-    "${BASE_RESOURCE_LOCATION}/icons")
+    # JSON
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/json/placeholder.json"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/json/themes/theme_ufo/ufo_light.json"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/json/themes/theme_ufo/ufo_dark.json"
 
-set(BASE_FONT_LOCATION
+    # ICONS
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Google icons/help.svg"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Google icons/settings.svg"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Application icons/ufo.png"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Application icons/ufo.ico"
 
-    "${BASE_RESOURCE_LOCATION}/fonts")
+    # TTF
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Black.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Bold.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-BoldItalic.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-ExtraLight.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-ExtraLightItalic.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Italic.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Light.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-LightItalic.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Regular.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-SemiBoldItalic.ttf"
 
-set(BASE_QML_LOCATION
-
-    "${BASE_RESOURCE_LOCATION}/qml")
-
-
-
-
-# Make sure to prefix the path with ${BASE_TXT_LOCATION}.
-set(RESOURCE_TXT_FILES
-
-    "")
-
-
-# Make sure to prefix the path with ${BASE_JSON_LOCATION}.
-set(RESOURCE_JSON_FILES
-
-    "${BASE_JSON_LOCATION}/placeholder.json"
-    "${BASE_JSON_LOCATION}/theme_ufo/light.json"
-    "${BASE_JSON_LOCATION}/theme_ufo/dark.json")
-
-
-# Make sure to prefix the path with ${BASE_ICON_LOCATION}.
-set(RESOURCE_ICON_FILES
-
-    "${BASE_ICON_LOCATION}/Google icons/help.svg"
-    "${BASE_ICON_LOCATION}/Google icons/home.svg"
-    "${BASE_ICON_LOCATION}/Google icons/list.svg"
-    "${BASE_ICON_LOCATION}/Google icons/settings.svg")
-
-
-# Make sure to prefix the path with ${BASE_ICON_LOCATION}.
-set(RESOURCE_FONT_FILES
-
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-Black.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-Bold.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-BoldItalic.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-ExtraLight.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-ExtraLightItalic.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-Italic.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-Light.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-LightItalic.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-Regular.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-SemiBold.ttf"
-    "${BASE_FONT_LOCATION}/Titillium_Web/TitilliumWeb-SemiBoldItalic.ttf")
-
-
-# Make sure to prefix the path with ${BASE_QML_LOCATION}.
-set(RESOURCE_QML_FILES
-
-    "${BASE_QML_LOCATION}/main.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_MenuBar.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_MenuBarItem.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_Menu.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_MenuItem.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_MenuSeparator.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_MenuItemIndicator.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_MenuItemArrow.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_StatusBar.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_SideBarButton.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_SideBar.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_Page.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_SideBarSeparator.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_GroupBox.qml"
-    "${BASE_QML_LOCATION}/ufo/UFO_ComboBox.qml")
+    # QML
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/main.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuBar.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuBarItem.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_Menu.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuItem.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuSeparator.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuItemIndicator.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuItemArrow.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_StatusBar.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SideBarButton.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SideBar.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_Page.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SideBarSeparator.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_GroupBox.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_ComboBox.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_TextField.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_Button.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_custom/UFO_RoundProgressBar.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/pages/UFO_About.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/pages/UFO_Settings.qml")
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
@@ -247,11 +211,7 @@ target_sources(${EXECUTABLE_NAME}
     ${SOURCE_FILES}
 
     # Resource Files
-    ${RESOURCE_TXT_FILES}
-    ${RESOURCE_JSON_FILES}
-    ${RESOURCE_ICON_FILES}
-    ${RESOURCE_FONT_FILES}
-    ${RESOURCE_QML_FILES})
+    ${RESOURCE_FILES})
 
 
 
@@ -269,11 +229,40 @@ target_include_directories(${EXECUTABLE_NAME}
 
 
 
+# [[ Compile Definitions ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+
+    target_compile_definitions(${EXECUTABLE_NAME}
+
+        PUBLIC
+        "TARGET_IS_64_BIT")
+endif()
+
+
+if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+
+    target_compile_definitions(${EXECUTABLE_NAME}
+
+        PUBLIC
+        "TARGET_IS_32_BIT")
+endif()
+
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ Compile Definitions ]]
+
+
+
+
+
 # [[ Custom tools ]]
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 
-include("${CMAKE_SOURCE_DIR}/cmake_scripts/other/copy_resources.cmake")
+include("${CMAKE_SOURCE_DIR}/cmake_scripts/copy_resources.cmake")
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]

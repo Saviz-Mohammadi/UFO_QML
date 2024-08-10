@@ -5,6 +5,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QFontDatabase>
+#include <QIcon>
 #include "app_theme.hpp"
 
 void registerTypes();

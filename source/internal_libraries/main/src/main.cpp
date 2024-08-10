@@ -5,17 +5,18 @@ int main(int argc, char *argv[])
     QGuiApplication application(argc, argv);
     QQmlApplicationEngine engine;
 
-
     registerTypes();
     setupThemeSystem();
     chooseFirstTheme();
     readCustomFonts(application);
     setGlobalFont(application);
 
+    // If you are not seeing the icon change under a Linux machine, it maybe because of Wayland.
+    // Wayland is new and is really problematic.
+    QGuiApplication::setWindowIcon(QIcon("./resources/icons/Application icons/ufo.png"));
 
     // Load main.qml to start the engine. (Relative path from executable)
     engine.load("./resources/qml/main.qml");
-
 
     // Launch Event loop.
     return application.exec();
@@ -32,25 +33,14 @@ void setupThemeSystem()
 {
     AppTheme *appTheme = AppTheme::cppInstance();
 
-
-    appTheme->addTheme(
-
-        "light",
-        "./resources/json/theme_ufo/light.json"
-    );
-
-    appTheme->addTheme(
-
-        "dark",
-        "./resources/json/theme_ufo/dark.json"
-    );
+    appTheme->addThemes("./resources/json/themes");
 }
 
 void chooseFirstTheme()
 {
     AppTheme *appTheme = AppTheme::cppInstance();
 
-    QString lastUsedThemeKey = appTheme->cachedTheme();
+    QString lastUsedThemeKey = appTheme->getCachedTheme();
 
 
     if(!lastUsedThemeKey.isEmpty())
@@ -60,7 +50,7 @@ void chooseFirstTheme()
         return;
     }
 
-    appTheme->loadColorsFromTheme("light");
+    appTheme->loadColorsFromTheme("ufo_light");
 }
 
 void readCustomFonts(const QGuiApplication &application)
@@ -68,17 +58,17 @@ void readCustomFonts(const QGuiApplication &application)
     // Path to font files.
     QStringList fontPaths;
 
-    fontPaths << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-Black.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-Bold.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-BoldItalic.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-ExtraLight.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-ExtraLightItalic.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-Italic.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-Light.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-LightItalic.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-Regular.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf"
-              << application.applicationDirPath() + "/resources/fonts/Titillium_Web/TitilliumWeb-SemiBoldItalic.ttf";
+    fontPaths << "./resources/fonts/Titillium_Web/TitilliumWeb-Black.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-Bold.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-BoldItalic.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-ExtraLight.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-ExtraLightItalic.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-Italic.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-Light.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-LightItalic.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-Regular.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf"
+              << "./resources/fonts/Titillium_Web/TitilliumWeb-SemiBoldItalic.ttf";
 
     // Looping through each font file.
     foreach (const QString &fontPath, fontPaths)
@@ -87,9 +77,16 @@ void readCustomFonts(const QGuiApplication &application)
 
         if (fontId == -1)
         {
-            #ifdef QT_DEBUG
-            qDebug() << "Failed to load font file:" << fontPath;
-            #endif
+
+
+
+// Debugging
+#ifdef QT_DEBUG
+            qDebug() << "\n**************************************************\n"
+                     << "* Function    :" << __FUNCTION__        << "\n"
+                     << "* Message     : Failed to load font file:" << fontPath
+                     << "\n**************************************************\n\n";
+#endif
         }
     }
 }
@@ -108,18 +105,23 @@ void setGlobalFont(const QGuiApplication &application)
         QFont customFont(
 
             fontFamilyName,
-            11
-            );
+            10
+        );
 
         QGuiApplication::setFont(customFont);
     }
 
     else
     {
-        // Font family is not available, handle the error.
 
-        #ifdef QT_DEBUG
-        qDebug() << "Font family" << fontFamilyName << "is not available.";
-        #endif
+
+
+// Debugging
+#ifdef QT_DEBUG
+        qDebug() << "\n**************************************************\n"
+                 << "* Function    :" << __FUNCTION__        << "\n"
+                 << "* Message     : Font family" << fontFamilyName << "is not available."
+                 << "\n**************************************************\n\n";
+#endif
     }
 }

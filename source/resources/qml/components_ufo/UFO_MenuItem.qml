@@ -5,7 +5,6 @@ import QtQuick.Layouts
 // Custom CPP Registered Types
 import AppTheme 1.0
 
-
 MenuItem {
     id: root
 
@@ -25,7 +24,9 @@ MenuItem {
         text: root.text
         font: root.font
         opacity: enabled ? 1.0 : 0.3
-        color: root.highlighted ? Qt.color(AppTheme.Colors["UFO_MenuItem_Text_Highlighted"]) : Qt.color(AppTheme.Colors["UFO_MenuItem_Text_Normal"])
+        color: root.highlighted ? Qt.color(
+                                      AppTheme.colors["UFO_MenuItem_Text_Highlighted"]) : Qt.color(
+                                      AppTheme.colors["UFO_MenuItem_Text_Normal"])
         elide: Text.ElideRight
     }
 
@@ -35,8 +36,10 @@ MenuItem {
         implicitWidth: 120
         implicitHeight: 28
 
-        radius: 4
+        radius: 0
         opacity: enabled ? 1 : 0.3
-        color: root.highlighted ? Qt.color(AppTheme.Colors["UFO_MenuItem_Background_Highlighted"]) : Qt.color(AppTheme.Colors["UFO_MenuItem_Background_Normal"])
+        color: root.highlighted ? Qt.color(
+                                      AppTheme.colors["UFO_MenuItem_Background_Highlighted"]) : Qt.color(
+                                      AppTheme.colors["UFO_MenuItem_Background_Normal"])
     }
 }

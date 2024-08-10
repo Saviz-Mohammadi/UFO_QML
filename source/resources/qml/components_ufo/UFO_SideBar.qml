@@ -5,11 +5,10 @@ import QtQuick.Layouts
 // Custom CPP Registered Types
 import AppTheme 1.0
 
-
 Item {
     id: root
 
-    signal tabChanged(int index)
+    signal tabChanged(string pageName)
 
     implicitWidth: 200
     implicitHeight: 200
@@ -23,7 +22,7 @@ Item {
 
         anchors.fill: parent
 
-        color: Qt.color(AppTheme.Colors["UFO_SideBar_Background"])
+        color: Qt.color(AppTheme.colors["UFO_SideBar_Background"])
 
         ColumnLayout {
             id: columnLayout_1
@@ -51,51 +50,28 @@ Item {
                     clip: true
                     spacing: 10
 
-                    UFO_SideBarButton {
-                        id: ufo_SidBarButton_1
+                    // UFO_SideBarButton {
+                    //     id: ufo_SidBarButton_1
 
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: 40
+                    //     Layout.fillWidth: true
+                    //     Layout.preferredHeight: 40
 
-                        Layout.leftMargin: 15
-                        Layout.rightMargin: 15
+                    //     Layout.leftMargin: 15
+                    //     Layout.rightMargin: 15
 
-                        ButtonGroup.group: buttonGroup_1
+                    //     ButtonGroup.group: buttonGroup_1
 
-                        checkable: true
-                        autoExclusive: true
-                        checked: false
+                    //     checkable: true
+                    //     autoExclusive: true
+                    //     checked: false
 
-                        text: qsTr("Home Page")
-                        svg: "./../../icons/Google icons/home.svg"
+                    //     text: qsTr("New page")
+                    //     svg: "./../../icons/Google icons/<icon-name>.svg"
 
-                        onClicked: {
-                            root.tabChanged(0)
-                        }
-                    }
-
-                    UFO_SideBarButton {
-                        id: ufo_SidBarButton_2
-
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: 40
-
-                        Layout.leftMargin: 15
-                        Layout.rightMargin: 15
-
-                        ButtonGroup.group: buttonGroup_1
-
-                        checkable: true
-                        autoExclusive: true
-                        checked: false
-
-                        text: qsTr("New Page")
-                        svg: "./../../icons/Google icons/list.svg"
-
-                        onClicked: {
-                            root.tabChanged(1)
-                        }
-                    }
+                    //     onClicked: {
+                    //         root.tabChanged("Page name")
+                    //     }
+                    // }
 
                     // Add more tabs here...
                 }
@@ -104,7 +80,6 @@ Item {
             // We could place the entire section below inside the "ScrollView" in the above section.
             // This would simplify our structure. However, I think it's beneficial to always have
             // tabs like "Settings" and "About" visible at the bottom.
-
             Item {
                 id: item_1
 
@@ -138,11 +113,11 @@ Item {
                 autoExclusive: true
                 checked: false
 
-                text: qsTr("Settings Page")
+                text: qsTr("Settings")
                 svg: "./../../icons/Google icons/settings.svg"
 
                 onClicked: {
-                    root.tabChanged(1)
+                    root.tabChanged("Settings page")
                 }
             }
 
@@ -161,11 +136,11 @@ Item {
                 autoExclusive: true
                 checked: true
 
-                text: qsTr("About Page")
+                text: qsTr("About")
                 svg: "./../../icons/Google icons/help.svg"
 
                 onClicked: {
-                    root.tabChanged(0)
+                    root.tabChanged("About page")
                 }
             }
         }
