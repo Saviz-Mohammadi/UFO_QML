@@ -1,6 +1,18 @@
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 
+Previously I used to have "children" be the default property in qml custom
+components. But, now I use "data" instead. This is because that data is capable
+of having a mix between visual types and non visual types, while as far as I am aware
+children is only meant to be for visual types.
+
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+
+
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+
 For handling SideBar and StackLayout there are two ways that I know of.
 
 The first method involves emitting a signal from SideBar along with index
