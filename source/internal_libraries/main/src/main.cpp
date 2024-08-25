@@ -1,5 +1,10 @@
 #include "main.hpp"
 
+#ifdef QT_DEBUG
+    #include "logger.hpp"
+#endif
+
+
 int main(int argc, char *argv[])
 {
     QGuiApplication application(argc, argv);
@@ -11,8 +16,7 @@ int main(int argc, char *argv[])
     readCustomFonts(application);
     setGlobalFont(application);
 
-    // If you are not seeing the icon change under a Linux machine, it maybe because of Wayland.
-    // Wayland is new and is really problematic.
+    // You may face issues when using Wayland.
     QGuiApplication::setWindowIcon(QIcon("./resources/icons/Application icons/ufo.png"));
 
     // Load main.qml to start the engine. (Relative path from executable)
@@ -77,16 +81,15 @@ void readCustomFonts(const QGuiApplication &application)
 
         if (fontId == -1)
         {
+#ifdef QT_DEBUG
+            QString message("Failed to load font file: %1");
 
+            message = message.arg(
+                fontPath
+            );
 
-
-// Debugging
-// #ifdef QT_DEBUG
-//             qDebug() << "\n**************************************************\n"
-//                      << "* Function    :" << __FUNCTION__        << "\n"
-//                      << "* Message     : Failed to load font file:" << fontPath
-//                      << "\n**************************************************\n\n";
-// #endif
+            Logger::logDebug("N/A", Q_FUNC_INFO, message);
+#endif
         }
     }
 }
@@ -113,15 +116,14 @@ void setGlobalFont(const QGuiApplication &application)
 
     else
     {
+#ifdef QT_DEBUG
+        QString message("Font family %1 is not available.");
 
+        message = message.arg(
+            fontFamilyName
+        );
 
-
-// Debugging
-// #ifdef QT_DEBUG
-//         qDebug() << "\n**************************************************\n"
-//                  << "* Function    :" << __FUNCTION__        << "\n"
-//                  << "* Message     : Font family" << fontFamilyName << "is not available."
-//                  << "\n**************************************************\n\n";
-// #endif
+        Logger::logDebug("N/A", Q_FUNC_INFO, message);
+#endif
     }
 }

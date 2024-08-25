@@ -4,6 +4,7 @@
     #include "logger.hpp"
 #endif
 
+
 AppTheme* AppTheme::m_Instance = nullptr;
 
 // Constructors, Initializers, ShutDown, Destructor
@@ -18,14 +19,18 @@ AppTheme::AppTheme(QObject *parent, const QString& name)
     this->setObjectName(name);
 
 #ifdef QT_DEBUG
-    Logger::logDebug(this->objectName(), Q_FUNC_INFO, "Call to Constructor");
+    QString message("Call to Constructor");
+
+    Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
 #endif
 }
 
 AppTheme::~AppTheme()
 {
 #ifdef QT_DEBUG
-    Logger::logDebug(this->objectName(), Q_FUNC_INFO, "Call to Destructor");
+    QString message("Call to Destructor");
+
+    Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
 #endif
 }
 
@@ -77,18 +82,18 @@ void AppTheme::addTheme(const QString &filePath)
     QFile file(filePath);
     QFileInfo fileInfo(file);
 
+
     if (!file.exists())
     {
-// Debugging
-// #ifdef QT_DEBUG
-//         qDebug() << "\n**************************************************\n"
-//                  << "* Object Name :" << this->objectName()  << "\n"
-//                  << "* Function    :" << __FUNCTION__        << "\n"
-//                  << "* Message     : File does not exist: "  << fileInfo.absolutePath()
-//                  << "\n**************************************************\n\n";
-// #endif
+#ifdef QT_DEBUG
+        QString message("File does not exist: %1");
 
+        message = message.arg(
+            fileInfo.absolutePath()
+        );
 
+        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+#endif
 
         return;
     }
@@ -97,37 +102,22 @@ void AppTheme::addTheme(const QString &filePath)
 
     if (!fileTypeIsJson)
     {
-// Debugging
-// #ifdef QT_DEBUG
-//         qDebug() << "\n**************************************************\n"
-//                  << "* Object Name :" << this->objectName()     << "\n"
-//                  << "* Function    :" << __FUNCTION__           << "\n"
-//                  << "* Message     : File is not a JSON file! " << fileInfo.fileName()
-//                  << "* Full Path   : " << fileInfo.absolutePath()
-//                  << "\n**************************************************\n\n";
-// #endif
+#ifdef QT_DEBUG
+        QString message("File is not of JSON type! \n File Name: %1 \n Full Path: %2");
 
+        message = message.arg(
+            fileInfo.fileName(),
+            fileInfo.absolutePath()
+        );
 
+        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+#endif
 
         return;
     }
 
 
-
     // You can add more rules for fileName here using Regex.
-
-
-
-// Debugging
-// #ifdef QT_DEBUG
-//     qDebug() << "\n**************************************************\n"
-//              << "* Object Name :" << this->objectName()     << "\n"
-//              << "* Function    :" << __FUNCTION__           << "\n"
-//              << "* Message     : JSON file found! " << fileInfo.fileName()
-//              << "\n**************************************************\n\n";
-// #endif
-
-
 
     m_Themes.insert(fileInfo.baseName(), filePath);
 
@@ -171,32 +161,30 @@ void AppTheme::loadColorsFromTheme(const QString &themeKey)
 
     if (!themeFile.open(QIODevice::ReadOnly))
     {
-// Debugging
-// #ifdef QT_DEBUG
-//         qDebug() << "\n**************************************************\n"
-//                  << "* Object Name :" << this->objectName()      << "\n"
-//                  << "* Function    :" << __FUNCTION__            << "\n"
-//                  << "* Message     : Could not open JSON file: " << QFileInfo(themeFile).filePath()
-//                  << "\n**************************************************\n\n";
-// #endif
+#ifdef QT_DEBUG
+        QString message("Could not open JSON file: %1");
 
+        message = message.arg(
+            QFileInfo(themeFile).filePath()
+        );
 
+        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+#endif
 
         return;
     }
 
     if (!placeholderFile.open(QIODevice::ReadOnly))
     {
-// Debugging
-// #ifdef QT_DEBUG
-//         qDebug() << "\n**************************************************\n"
-//                  << "* Object Name :" << this->objectName()                  << "\n"
-//                  << "* Function    :" << __FUNCTION__                        << "\n"
-//                  << "* Message     : Could not open Placeholder JSON file: " << QFileInfo(placeholderFile).filePath()
-//                  << "\n**************************************************\n\n";
-// #endif
+#ifdef QT_DEBUG
+        QString message("Could not open Placeholder JSON file: %1");
 
+        message = message.arg(
+            QFileInfo(placeholderFile).filePath()
+        );
 
+        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+#endif
 
         return;
     }
@@ -289,17 +277,15 @@ QString AppTheme::resolvePlaceholders(const QString &themeJson, const QString &p
 
         else
         {
-// Debugging
-// #ifdef QT_DEBUG
-//             qDebug() << "\n**************************************************\n\n"
-//                      << "* Object Name :" << this->objectName()        << "\n"
-//                      << "* Function    :" << __FUNCTION__              << "\n"
-//                      << "* Message     : Placeholder: " << placeholder << "not found!"
-//                      << "\n**************************************************\n\n";
-// #endif
+#ifdef QT_DEBUG
+            QString message("Placeholder: %1 not found!");
 
+            message = message.arg(
+                placeholder
+            );
 
-
+            Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+#endif
         }
     }
 

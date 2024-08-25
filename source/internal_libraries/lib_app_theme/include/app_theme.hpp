@@ -14,6 +14,7 @@
 #include <QSettings>
 #include <QVariantMap>
 
+
 class AppTheme : public QObject
 {
     Q_OBJECT

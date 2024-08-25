@@ -8,6 +8,7 @@
 #include <QIcon>
 #include "app_theme.hpp"
 
+
 void registerTypes();
 void setupThemeSystem();
 void chooseFirstTheme();
