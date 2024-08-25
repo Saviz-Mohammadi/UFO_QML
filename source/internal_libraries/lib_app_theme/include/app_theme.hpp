@@ -23,13 +23,16 @@ class AppTheme : public QObject
     Q_PROPERTY(QVariantMap themes READ getThemes NOTIFY themesChanged FINAL)
     Q_PROPERTY(QVariantMap colors READ getColors NOTIFY colorsChanged FINAL)
 
-    // Constructors, Initializers, Destructor
+    // Constructors, Initializers, ShutDown, Destructor
 public:
     explicit AppTheme(QObject *parent = nullptr, const QString& name = "No name");
     ~AppTheme();
 
     static AppTheme *qmlInstance(QQmlEngine *engine, QJSEngine *scriptEngine);
     static AppTheme *cppInstance(QObject *parent = nullptr);
+
+    // No need for Init().
+    static void ShutDown();
 
     // Fields;
 private:

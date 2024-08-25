@@ -6,12 +6,11 @@
 # variable name for the same purpose if you wish to.
 
 # Project name cannot contain any spaces. Use underlines instead.
-project("Lib_AppTheme"
+project("Lib_Logger"
 
     VERSION 0.0.1
 
-    DESCRIPTION "A simple utility for creating dynamic themes
-                for a QML application."
+    DESCRIPTION "A simple utility for logging messages."
 
     LANGUAGES CXX)
 
@@ -29,12 +28,12 @@ project("Lib_AppTheme"
 
 set(HEADER_FILES
 
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/app_theme.hpp")
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/logger.hpp")
 	
 
 set(SOURCE_FILES
 
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/app_theme.cpp")
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/logger.cpp")
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
@@ -101,9 +100,7 @@ target_link_libraries(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
 
-    PRIVATE
-
-    "Lib_Logger")
+    PRIVATE)
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]

@@ -330,7 +330,8 @@ add_subdirectory("${CMAKE_SOURCE_DIR}/internal_libraries")
 target_link_libraries(${EXECUTABLE_NAME}
 
     PRIVATE
-    "Lib_AppTheme")
+    "Lib_AppTheme"
+    "Lib_Logger")
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]

@@ -81,12 +81,12 @@ void readCustomFonts(const QGuiApplication &application)
 
 
 // Debugging
-#ifdef QT_DEBUG
-            qDebug() << "\n**************************************************\n"
-                     << "* Function    :" << __FUNCTION__        << "\n"
-                     << "* Message     : Failed to load font file:" << fontPath
-                     << "\n**************************************************\n\n";
-#endif
+// #ifdef QT_DEBUG
+//             qDebug() << "\n**************************************************\n"
+//                      << "* Function    :" << __FUNCTION__        << "\n"
+//                      << "* Message     : Failed to load font file:" << fontPath
+//                      << "\n**************************************************\n\n";
+// #endif
         }
     }
 }
@@ -117,11 +117,11 @@ void setGlobalFont(const QGuiApplication &application)
 
 
 // Debugging
-#ifdef QT_DEBUG
-        qDebug() << "\n**************************************************\n"
-                 << "* Function    :" << __FUNCTION__        << "\n"
-                 << "* Message     : Font family" << fontFamilyName << "is not available."
-                 << "\n**************************************************\n\n";
-#endif
+// #ifdef QT_DEBUG
+//         qDebug() << "\n**************************************************\n"
+//                  << "* Function    :" << __FUNCTION__        << "\n"
+//                  << "* Message     : Font family" << fontFamilyName << "is not available."
+//                  << "\n**************************************************\n\n";
+// #endif
     }
 }
