@@ -1,23 +1,48 @@
 #include "logger.hpp"
 
-QChar Logger::m_Seperator = QChar('-');
-quint8 Logger::m_Repeat = 80;
 
-// Constructors, Initializers, ShutDown, Destructor
+// Methods
 // [[------------------------------------------------------------------------]]
 // [[------------------------------------------------------------------------]]
 
-Logger::Logger(QObject *parent, const QString& name)
-    : QObject{parent}
+void logger::log(LOG_LEVEL level, const QString &objectName, const QString &functionInformation, const QString &message, const QChar &delimiter, quint8 delimiterCount)
 {
-    this->setObjectName(name);
+    if(level == logger::LOG_LEVEL::DEBUG)
+    {
+        logger::logDebug(objectName, functionInformation, message, delimiter, delimiterCount);
+
+        return;
+    }
+
+    if(level == logger::LOG_LEVEL::INFO)
+    {
+        logger::logDebug(objectName, functionInformation, message, delimiter, delimiterCount);
+
+        return;
+    }
+
+    if(level == logger::LOG_LEVEL::WARNING)
+    {
+        logger::logWarning(objectName, functionInformation, message, delimiter, delimiterCount);
+
+        return;
+    }
+
+    if(level == logger::LOG_LEVEL::CRITICAL)
+    {
+        logger::logCritical(objectName, functionInformation, message, delimiter, delimiterCount);
+
+        return;
+    }
+
+    if(level == logger::LOG_LEVEL::FATAL)
+    {
+        logger::logFatal(objectName, functionInformation, message, delimiter, delimiterCount);
+
+        return;
+    }
 }
 
-Logger::~Logger()
-{
-
-}
-
 // [[------------------------------------------------------------------------]]
 // [[------------------------------------------------------------------------]]
 
@@ -25,114 +50,88 @@ Logger::~Logger()
 
 
 
-// PUBLIC Methods
+// STATIC Methods
 // [[------------------------------------------------------------------------]]
 // [[------------------------------------------------------------------------]]
 
-void Logger::logDebug(const QString &objectName, const QString &functionInformation, const QString &message)
+void logger::logDebug(const QString &objectName, const QString &functionInformation, const QString &message, const QChar &delimiter, quint8 delimiterCount)
 {
     QString logOutput;
     QTextStream stream(&logOutput);
 
-    stream << "\n" << QString(m_Seperator).repeated(m_Repeat)
-           << "\n" << ">> Object Name : " << objectName
-           << "\n" << ">> Function    : " << functionInformation
-           << "\n" << ">> Message     : " << "\n"
-           << "\n" << message
-           << "\n" << QString(m_Seperator).repeated(m_Repeat) << "\n";
+    stream  << "\n" << "[DEBUG]"
+            << "\n" << QString(delimiter).repeated(delimiterCount)
+            << "\n" << ">> Object Name : " << objectName
+            << "\n" << ">> Function    : " << functionInformation
+            << "\n" << ">> Message     : " << "\n"
+            << "\n" << message
+            << "\n" << QString(delimiter).repeated(delimiterCount) << "\n";
 
     qDebug().noquote() << logOutput.toUtf8().constData();
 }
 
-void Logger::logInfo(const QString &objectName, const QString &functionInformation, const QString &message)
+void logger::logInfo(const QString &objectName, const QString &functionInformation, const QString &message, const QChar &delimiter, quint8 delimiterCount)
 {
     QString logOutput;
     QTextStream stream(&logOutput);
 
-    stream << "\n" << QString(m_Seperator).repeated(m_Repeat)
-           << "\n" << ">> Object Name : " << objectName
-           << "\n" << ">> Function    : " << functionInformation
-           << "\n" << ">> Message     : " << "\n"
-           << "\n" << message
-           << "\n" << QString(m_Seperator).repeated(m_Repeat) << "\n";
+    stream  << "\n" << "[INFO]"
+            << "\n" << QString(delimiter).repeated(delimiterCount)
+            << "\n" << ">> Object Name : " << objectName
+            << "\n" << ">> Function    : " << functionInformation
+            << "\n" << ">> Message     : " << "\n"
+            << "\n" << message
+            << "\n" << QString(delimiter).repeated(delimiterCount) << "\n";
 
     qInfo().noquote() << logOutput.toUtf8().constData();
 }
 
-void Logger::logWarning(const QString &objectName, const QString &functionInformation, const QString &message)
+void logger::logWarning(const QString &objectName, const QString &functionInformation, const QString &message, const QChar &delimiter, quint8 delimiterCount)
 {
     QString logOutput;
     QTextStream stream(&logOutput);
 
-    stream << "\n" << QString(m_Seperator).repeated(m_Repeat)
-           << "\n" << ">> Object Name : " << objectName
-           << "\n" << ">> Function    : " << functionInformation
-           << "\n" << ">> Message     : " << "\n"
-           << "\n" << message
-           << "\n" << QString(m_Seperator).repeated(m_Repeat) << "\n";
+    stream  << "\n" << "[WARNING]"
+            << "\n" << QString(delimiter).repeated(delimiterCount)
+            << "\n" << ">> Object Name : " << objectName
+            << "\n" << ">> Function    : " << functionInformation
+            << "\n" << ">> Message     : " << "\n"
+            << "\n" << message
+            << "\n" << QString(delimiter).repeated(delimiterCount) << "\n";
 
     qWarning().noquote() << logOutput.toUtf8().constData();
 }
 
-void Logger::logCritical(const QString &objectName, const QString &functionInformation, const QString &message)
+void logger::logCritical(const QString &objectName, const QString &functionInformation, const QString &message, const QChar &delimiter, quint8 delimiterCount)
 {
     QString logOutput;
     QTextStream stream(&logOutput);
 
-    stream << "\n" << QString(m_Seperator).repeated(m_Repeat)
-           << "\n" << ">> Object Name : " << objectName
-           << "\n" << ">> Function    : " << functionInformation
-           << "\n" << ">> Message     : " << "\n"
-           << "\n" << message
-           << "\n" << QString(m_Seperator).repeated(m_Repeat) << "\n";
+    stream  << "\n" << "[CRITICAL]"
+            << "\n" << QString(delimiter).repeated(delimiterCount)
+            << "\n" << ">> Object Name : " << objectName
+            << "\n" << ">> Function    : " << functionInformation
+            << "\n" << ">> Message     : " << "\n"
+            << "\n" << message
+            << "\n" << QString(delimiter).repeated(delimiterCount) << "\n";
 
     qCritical().noquote() << logOutput.toUtf8().constData();
 }
 
-void Logger::logFatal(const QString &objectName, const QString &functionInformation, const QString &message)
+void logger::logFatal(const QString &objectName, const QString &functionInformation, const QString &message, const QChar &delimiter, quint8 delimiterCount)
 {
     QString logOutput;
     QTextStream stream(&logOutput);
 
-    stream << "\n" << QString(m_Seperator).repeated(m_Repeat)
-           << "\n" << ">> Object Name : " << objectName
-           << "\n" << ">> Function    : " << functionInformation
-           << "\n" << ">> Message     : " << "\n"
-           << "\n" << message
-           << "\n" << QString(m_Seperator).repeated(m_Repeat) << "\n";
+    stream  << "\n" << "[FATAL]"
+            << "\n" << QString(delimiter).repeated(delimiterCount)
+            << "\n" << ">> Object Name : " << objectName
+            << "\n" << ">> Function    : " << functionInformation
+            << "\n" << ">> Message     : " << "\n"
+            << "\n" << message
+            << "\n" << QString(delimiter).repeated(delimiterCount) << "\n";
 
     qFatal().noquote() << logOutput.toUtf8().constData();
-}
-
-// [[------------------------------------------------------------------------]]
-// [[------------------------------------------------------------------------]]
-
-
-
-
-
-// PUBLIC Setters
-// [[------------------------------------------------------------------------]]
-// [[------------------------------------------------------------------------]]
-
-void Logger::setSeperator(const QChar &newSeperator)
-{
-    if (m_Seperator == newSeperator)
-    {
-        return;
-    }
-
-    m_Seperator = newSeperator;
-}
-
-void Logger::setRepeat(quint16 newRepeat)
-{
-    if (m_Repeat == newRepeat)
-    {
-        return;
-    }
-
-    m_Repeat = newRepeat;
 }
 
 // [[------------------------------------------------------------------------]]

@@ -21,7 +21,7 @@ AppTheme::AppTheme(QObject *parent, const QString& name)
 #ifdef QT_DEBUG
     QString message("Call to Constructor");
 
-    Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+    logger::log(logger::LOG_LEVEL::DEBUG, this->objectName(), Q_FUNC_INFO, message);
 #endif
 }
 
@@ -30,7 +30,7 @@ AppTheme::~AppTheme()
 #ifdef QT_DEBUG
     QString message("Call to Destructor");
 
-    Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+    logger::log(logger::LOG_LEVEL::DEBUG, this->objectName(), Q_FUNC_INFO, message);
 #endif
 }
 
@@ -92,7 +92,7 @@ void AppTheme::addTheme(const QString &filePath)
             fileInfo.absolutePath()
         );
 
-        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+        logger::log(logger::LOG_LEVEL::DEBUG, this->objectName(), Q_FUNC_INFO, message);
 #endif
 
         return;
@@ -110,7 +110,7 @@ void AppTheme::addTheme(const QString &filePath)
             fileInfo.absolutePath()
         );
 
-        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+        logger::log(logger::LOG_LEVEL::DEBUG, this->objectName(), Q_FUNC_INFO, message);
 #endif
 
         return;
@@ -168,7 +168,7 @@ void AppTheme::loadColorsFromTheme(const QString &themeKey)
             QFileInfo(themeFile).filePath()
         );
 
-        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+        logger::log(logger::LOG_LEVEL::DEBUG, this->objectName(), Q_FUNC_INFO, message);
 #endif
 
         return;
@@ -183,7 +183,7 @@ void AppTheme::loadColorsFromTheme(const QString &themeKey)
             QFileInfo(placeholderFile).filePath()
         );
 
-        Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+        logger::log(logger::LOG_LEVEL::DEBUG, this->objectName(), Q_FUNC_INFO, message);
 #endif
 
         return;
@@ -284,7 +284,7 @@ QString AppTheme::resolvePlaceholders(const QString &themeJson, const QString &p
                 placeholder
             );
 
-            Logger::logDebug(this->objectName(), Q_FUNC_INFO, message);
+            logger::log(logger::LOG_LEVEL::DEBUG, this->objectName(), Q_FUNC_INFO, message);
 #endif
         }
     }

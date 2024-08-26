@@ -88,7 +88,7 @@ void readCustomFonts(const QGuiApplication &application)
                 fontPath
             );
 
-            Logger::logDebug("N/A", Q_FUNC_INFO, message);
+            logger::log(logger::LOG_LEVEL::DEBUG, "N/A", Q_FUNC_INFO, message);
 #endif
         }
     }
@@ -123,7 +123,7 @@ void setGlobalFont(const QGuiApplication &application)
             fontFamilyName
         );
 
-        Logger::logDebug("N/A", Q_FUNC_INFO, message);
+        logger::log(logger::LOG_LEVEL::DEBUG, "N/A", Q_FUNC_INFO, message);
 #endif
     }
 }
