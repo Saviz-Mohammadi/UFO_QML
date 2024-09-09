@@ -115,5 +115,9 @@
     "UFO_ProgressBar_Background": "Color_Light_6",
     "UFO_ProgressBar_ProgressIndicator": "Color_Dark_4",
 
-    "UFO_StopTimer_Background": "Color_Dark_3"
+    "UFO_StopTimer_Background": "Color_Dark_3",
+
+    "UFO_SplitView_Handle_Normal": "Color_Light_7",
+    "UFO_SplitView_Handle_Hovered": "Color_Light_7",
+    "UFO_SplitView_Handle_Pressed": "Color_Light_7"
 }
