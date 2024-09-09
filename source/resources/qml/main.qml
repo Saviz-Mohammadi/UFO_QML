@@ -121,7 +121,7 @@ ApplicationWindow {
         text: qsTr("Status Bar")
     }
 
-    SplitView {
+    UFO_SplitView {
         id: splitView_1
 
         anchors.fill: parent

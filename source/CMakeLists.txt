@@ -167,6 +167,7 @@ set(RESOURCE_FILES
     "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_ComboBox.qml"
     "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_TextField.qml"
     "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_Button.qml"
+    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SplitView.qml"
     "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_custom/UFO_RoundProgressBar.qml"
     "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/pages/UFO_About.qml"
     "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/pages/UFO_Settings.qml")
