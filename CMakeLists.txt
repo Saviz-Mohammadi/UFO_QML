@@ -38,6 +38,7 @@ find_package(Qt6 6.7.2 COMPONENTS
     REQUIRED
 
     Core
+    Concurrent
     Widgets
     Gui
     Quick
@@ -105,88 +106,11 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY	# Defines static lib path
 
 
 
-# [[ Resource Files ]]
-# [[ ----------------------------------------------------------------------- ]]
-# [[ ----------------------------------------------------------------------- ]]
-
-
-# This determines the base location where CMake can expect to find your resources.
-# Relative paths of where your filse can be found in the output location are deterimned based of this.
-set(RESOURCE_BASE_ORIGIN_LOCATION
-
-    "${CMAKE_SOURCE_DIR}/resources")
-
-# This determines where your base resources location in the final build will endup locating.
-set(RESOURCE_BASE_DESTINATION_LOCATION
-
-    "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/resources")
-
-
-# Make sure to prefix the path with ${RESOURCE_BASE_ORIGIN_LOCATION}.
-set(RESOURCE_FILES
-
-    # JSON
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/json/placeholder.json"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/json/themes/theme_ufo/ufo_light.json"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/json/themes/theme_ufo/ufo_dark.json"
-
-    # ICONS
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Google icons/help.svg"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Google icons/settings.svg"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Application icons/ufo.png"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/icons/Application icons/ufo.ico"
-
-    # TTF
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Black.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Bold.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-BoldItalic.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-ExtraLight.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-ExtraLightItalic.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Italic.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Light.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-LightItalic.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-Regular.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/fonts/Titillium_Web/TitilliumWeb-SemiBoldItalic.ttf"
-
-    # QML
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/main.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuBar.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuBarItem.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_Menu.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuItem.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuSeparator.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuItemIndicator.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_MenuItemArrow.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_StatusBar.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SideBarButton.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SideBar.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_Page.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SideBarSeparator.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_GroupBox.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_ComboBox.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_TextField.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_Button.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_ufo/UFO_SplitView.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/components_custom/UFO_RoundProgressBar.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/pages/UFO_About.qml"
-    "${RESOURCE_BASE_ORIGIN_LOCATION}/qml/pages/UFO_Settings.qml")
-
-# [[ ----------------------------------------------------------------------- ]]
-# [[ ----------------------------------------------------------------------- ]]
-# [[ Resource Files ]]
-
-
-
-
-
 # [[ Executable Target ]]
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 
 qt_add_executable(${EXECUTABLE_NAME})
-
-
 
 
 
@@ -202,20 +126,13 @@ set(SOURCE_FILES
 
 
 
-
 target_sources(${EXECUTABLE_NAME}
 
     PUBLIC
     ${HEADER_FILES}
 
     PRIVATE
-    ${SOURCE_FILES}
-
-    # Resource Files
-    ${RESOURCE_FILES})
-
-
-
+    ${SOURCE_FILES})
 
 target_include_directories(${EXECUTABLE_NAME}
 
@@ -282,6 +199,7 @@ target_link_libraries(${EXECUTABLE_NAME}
     PRIVATE
 
     Qt6::Core
+    Qt6::Concurrent
     Qt6::Widgets
     Qt6::Gui
     Qt6::Quick
@@ -324,7 +242,6 @@ install(TARGETS ${EXECUTABLE_NAME}
 # [[ ----------------------------------------------------------------------- ]]
 
 add_subdirectory("${CMAKE_SOURCE_DIR}/internal_libraries")
-
 
 
 
