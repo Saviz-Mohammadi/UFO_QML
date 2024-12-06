@@ -193,12 +193,12 @@ qt_add_executable(${EXECUTABLE_NAME})
 set(HEADER_FILES
 
     # HPP
-    "${CMAKE_SOURCE_DIR}/internal_libraries/main/include/main.hpp")
+    "${CMAKE_SOURCE_DIR}/main/include/main.hpp")
 
 set(SOURCE_FILES
 
     # CPP
-    "${CMAKE_SOURCE_DIR}/internal_libraries/main/src/main.cpp")
+    "${CMAKE_SOURCE_DIR}/main/src/main.cpp")
 
 
 
@@ -220,7 +220,7 @@ target_sources(${EXECUTABLE_NAME}
 target_include_directories(${EXECUTABLE_NAME}
 
     PUBLIC
-    "${CMAKE_SOURCE_DIR}/internal_libraries/main/include")
+    "${CMAKE_SOURCE_DIR}/main/include")
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
