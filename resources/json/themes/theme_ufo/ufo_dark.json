@@ -39,16 +39,16 @@
     "UFO_Button_Background_Hovered": "Color_Dark_1",
     "UFO_Button_Background_Normal": "Color_Dark_2",
 
-    "UFO_SideBarButton_Icon_Checked": "Color_Dark_3",
+    "UFO_SideBarButton_Icon_Checked": "Color_Dark_4",
     "UFO_SideBarButton_Icon_Hovered": "Color_Light_4",
-    "UFO_SideBarButton_Icon_Normal": "Color_Light_4",
+    "UFO_SideBarButton_Icon_Normal": "Color_Light_2",
 
     "UFO_SideBarButton_Text_Checked": "Color_Dark_4",
     "UFO_SideBarButton_Text_Hovered": "Color_Light_4",
-    "UFO_SideBarButton_Text_Normal": "Color_Light_4",
+    "UFO_SideBarButton_Text_Normal": "Color_Light_2",
 
     "UFO_SideBarButton_Background_Checked": "Color_Blue_3",
-    "UFO_SideBarButton_Background_Hovered": "Color_Dark_1",
+    "UFO_SideBarButton_Background_Hovered": "Color_Dark_3",
     "UFO_SideBarButton_Background_Normal": "Color_Dark_2",
 
     "UFO_SideBarSeparator": "Color_Dark_2",
