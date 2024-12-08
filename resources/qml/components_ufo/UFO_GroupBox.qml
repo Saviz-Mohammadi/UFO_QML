@@ -11,7 +11,7 @@ Item {
     implicitWidth: 300
     implicitHeight: (rectangle_1.implicitHeight + rectangle_2.implicitHeight + rectangle_3.implicitHeight)
 
-    default property alias content: columnLayout_1.children
+    default property alias content: columnLayout_1.data
     property int contentSpacing: 7
     property alias title: text_1.text
     property real titleFontSize: 1.3

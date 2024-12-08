@@ -5,7 +5,7 @@
 #endif
 
 
-AppTheme* AppTheme::m_Instance = nullptr;
+AppTheme* AppTheme::m_Instance = Q_NULLPTR;
 
 // Constructors, Initializers, ShutDown, Destructor
 // [[------------------------------------------------------------------------]]
@@ -63,7 +63,7 @@ AppTheme *AppTheme::cppInstance(QObject *parent)
 void AppTheme::ShutDown()
 {
     delete (m_Instance);
-    m_Instance = nullptr;
+    m_Instance = Q_NULLPTR;
 }
 
 // [[------------------------------------------------------------------------]]

@@ -26,11 +26,11 @@ class AppTheme : public QObject
 
     // Constructors, Initializers, ShutDown, Destructor
 public:
-    explicit AppTheme(QObject *parent = nullptr, const QString& name = "No name");
+    explicit AppTheme(QObject *parent = Q_NULLPTR, const QString& name = "No name");
     ~AppTheme();
 
     static AppTheme *qmlInstance(QQmlEngine *engine, QJSEngine *scriptEngine);
-    static AppTheme *cppInstance(QObject *parent = nullptr);
+    static AppTheme *cppInstance(QObject *parent = Q_NULLPTR);
 
     // No need for Init().
     static void ShutDown();
