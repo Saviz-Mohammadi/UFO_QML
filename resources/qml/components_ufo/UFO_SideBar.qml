@@ -10,6 +10,20 @@ Item {
 
     signal tabChanged(string pageName)
 
+    function checkTabButton(targetButton) {
+
+        switch (targetButton) {
+            case "Settings":
+                ufo_SidBarButton_3.checked = true
+                break
+            case "About":
+                ufo_SidBarButton_4.checked = true
+                break
+            default:
+                console.log("No valid value");
+        }
+    }
+
     implicitWidth: 200
     implicitHeight: 200
 

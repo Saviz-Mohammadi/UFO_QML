@@ -69,6 +69,9 @@ ApplicationWindow {
 
                 onTriggered: {
                     stackLayout_1.currentIndex = ufo_Settings.StackLayout.index
+
+                    // Change checked state of side bar.
+                    ufo_SideBar_1.checkTabButton("Settings")
                 }
             }
 
@@ -81,6 +84,9 @@ ApplicationWindow {
 
                 onTriggered: {
                     stackLayout_1.currentIndex = ufo_About.StackLayout.index
+
+                    // Change checked state of side bar.
+                    ufo_SideBar_1.checkTabButton("About")
                 }
             }
         }
