@@ -61,6 +61,21 @@ ApplicationWindow {
             leftMargin: 0
 
             UFO_MenuItem {
+                id: ufo_MenuItem_4
+
+                leftPadding: 10
+                rightPadding: 10
+                text: qsTr("Demo page")
+
+                onTriggered: {
+                    stackLayout_1.currentIndex = ufo_Demo.StackLayout.index
+
+                    // Change checked state of side bar.
+                    ufo_SideBar_1.checkTabButton("Demo")
+                }
+            }
+
+            UFO_MenuItem {
                 id: ufo_MenuItem_2
 
                 leftPadding: 10
@@ -145,6 +160,13 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
+            UFO_Demo {
+                id: ufo_Demo
+
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+            }
+
             UFO_Settings {
                 id: ufo_Settings
 
@@ -165,6 +187,9 @@ ApplicationWindow {
                 function onTabChanged(pageName) {
                     switch (pageName) {
 
+                    case "Demo page":
+                        stackLayout_1.currentIndex = ufo_Demo.StackLayout.index
+                        break
                     case "Settings page":
                         stackLayout_1.currentIndex = ufo_Settings.StackLayout.index
                         break

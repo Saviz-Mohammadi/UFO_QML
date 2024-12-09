@@ -68,7 +68,8 @@
     "UFO_ComboBox_Border_Normal": "Color_Dark_3",
     "UFO_ComboBox_Border_Pressed": "Color_Dark_3",
 
-    "UFO_ComboBox_Item_Text": "Color_Light_4",
+    "UFO_ComboBox_Item_Text_Normal": "Color_Light_3",
+    "UFO_ComboBox_Item_Text_Highlighted": "Color_Dark_4",
     "UFO_ComboBox_Item_Background_Normal": "Color_Dark_3",
     "UFO_ComboBox_Item_Background_Highlighted": "Color_Dark_4",
 

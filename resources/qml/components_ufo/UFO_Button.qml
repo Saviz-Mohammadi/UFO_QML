@@ -37,9 +37,13 @@ Button {
             color: {
                 if (root.checked) {
                     Qt.color(AppTheme.colors["UFO_Button_Icon_Checked"])
-                } else if (root.hovered) {
+                }
+
+                else if (root.hovered) {
                     Qt.color(AppTheme.colors["UFO_Button_Icon_Hovered"])
-                } else {
+                }
+
+                else {
                     Qt.color(AppTheme.colors["UFO_Button_Icon_Normal"])
                 }
             }

@@ -23,7 +23,7 @@ UFO_Page {
         Layout.fillWidth: true
 
         // No point setting the "Layout.fillHeight" as "UFO_Page" ignores height to enable vertical scrolling.
-        title: qsTr("Application Name and Version")
+        title: qsTr("Overview")
         contentSpacing: 10
 
         Text {
@@ -38,10 +38,9 @@ UFO_Page {
 
             color: Qt.color(AppTheme.colors["UFO_GroupBox_Content_Text"])
 
-            text: qsTr("Name: UFO_Todo") + "\n" + qsTr(
-                      "Version: 0.0.1 Beta")
+            text: qsTr("Name: UFO_Todo") + "     " + qsTr("Version: 0.1.1")
 
-            wrapMode: Text.WordWrap
+            wrapMode: Text.Wrap
             elide: Text.ElideRight
         }
     }
@@ -113,25 +112,28 @@ UFO_Page {
             Layout.fillWidth: true
 
             Layout.topMargin: 20
-            Layout.bottomMargin: 20
             Layout.leftMargin: 15
             Layout.rightMargin: 15
 
-            text: qsTr("We welcome contributions to the UFO_Todo application! Please visit our <a href=\"https://github.com/Saviz-Mohammadi/UFO_Todo\">GitHub page</a> for more information.")
+            text: qsTr("We welcome contributions to the UFO_QML template! Please visit our GitHub page by clicking the button below for more information.")
 
             color: Qt.color(AppTheme.colors["UFO_GroupBox_Content_Text"])
             wrapMode: Text.WordWrap
             elide: Text.ElideRight
+        }
 
-            HoverHandler {
-                id: hoverHandler_1
+        UFO_Button {
+            Layout.preferredWidth: 120
 
-                enabled: parent.hoveredLink
-                cursorShape: Qt.PointingHandCursor
-            }
+            Layout.bottomMargin: 20
+            Layout.leftMargin: 15
+            Layout.rightMargin: 15
 
-            onLinkActivated: {
-                Qt.openUrlExternally(text_3.hoveredLink)
+            text: "GitHub"
+            svg: "./../../icons/Google icons/globe.svg"
+
+            onClicked: {
+                Qt.openUrlExternally("https://github.com/Saviz-Mohammadi/UFO_QML")
             }
         }
     }

@@ -20,7 +20,17 @@ ComboBox {
             id: text_1
 
             text: modelData
-            color: Qt.color(AppTheme.colors["UFO_ComboBox_Item_Text"])
+            color: {
+
+                if (itemDelegate_1.highlighted) {
+                    Qt.color(AppTheme.colors["UFO_ComboBox_Item_Text_Highlighted"])
+                }
+
+                else {
+                    Qt.color(AppTheme.colors["UFO_ComboBox_Item_Text_Normal"])
+                }
+            }
+
             font: root.font
             elide: Text.ElideRight
             verticalAlignment: Text.AlignVCenter
