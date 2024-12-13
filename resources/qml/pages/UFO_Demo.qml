@@ -27,17 +27,13 @@ UFO_Page {
     }
 
     UFO_GroupBox {
-        id: ufo_GroupBox_1
-
         Layout.fillWidth: true
-        // No point setting "Layout.fillHeight" as "UFO_Page" ignores height to enable vertical scrolling.
+        // NOTE (SAVIZ): No point using "Layout.fillHeight" as "UFO_Page" ignores height to enable vertical scrolling.
 
         title: qsTr("Style")
         contentSpacing: 0
 
         Text {
-            id: text_1
-
             Layout.fillWidth: true
 
             Layout.topMargin: 20
@@ -63,35 +59,9 @@ UFO_Page {
             Layout.bottomMargin: 20
             Layout.leftMargin: 15
             Layout.rightMargin: 15
-
-            model: Object.keys(AppTheme.themes)
-
-            onActivated: {
-                AppTheme.loadColorsFromTheme(currentText)
-            }
-
-            Component.onCompleted: {
-                var cachedTheme = AppTheme.getCachedTheme()
-
-                for (var index = 0; index < ufo_ComboBox_1.model.length; ++index) {
-                    if (cachedTheme === ""
-                            && ufo_ComboBox_1.model[index] === "ufo_light") {
-
-                        ufo_ComboBox_1.currentIndex = index
-                        break
-                    }
-
-                    if (ufo_ComboBox_1.model[index] === cachedTheme) {
-                        ufo_ComboBox_1.currentIndex = index
-                        break
-                    }
-                }
-            }
         }
 
         UFO_TextField {
-            id: ufo_TextField_2
-
             placeholderText: "Type something"
 
             Layout.preferredWidth: 200
