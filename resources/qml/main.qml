@@ -17,7 +17,7 @@ ApplicationWindow {
     height: 600
 
     visible: true
-    title: qsTr("UFO_Todo")
+    title: qsTr("UFO_QML")
 
     menuBar: UFO_MenuBar {
         spacing: 0
