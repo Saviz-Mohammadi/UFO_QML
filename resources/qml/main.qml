@@ -96,7 +96,7 @@ ApplicationWindow {
                 leftPadding: 10
                 rightPadding: 10
 
-                text: qsTr("About UFO_Todo")
+                text: qsTr("About UFO_QML")
 
                 onTriggered: {
                     stackLayout.currentIndex = ufo_About.StackLayout.index
