@@ -159,13 +159,13 @@ ApplicationWindow {
 
                     // TODO (SAVIZ): I like to replace these with an enum, but currently I don't know how in QML.
                     switch (pageName) {
-                        case "Demo page":
+                        case "Demo Page":
                             stackLayout.currentIndex = ufo_Demo.StackLayout.index
                             break
-                        case "Settings page":
+                        case "Settings Page":
                             stackLayout.currentIndex = ufo_Settings.StackLayout.index
                             break
-                        case "About page":
+                        case "About Page":
                             stackLayout.currentIndex = ufo_About.StackLayout.index
                             break
                         default:

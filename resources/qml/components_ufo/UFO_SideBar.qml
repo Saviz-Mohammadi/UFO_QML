@@ -77,11 +77,11 @@ Item {
                         autoExclusive: true
                         checked: false
 
-                        text: qsTr("Demo Page")
+                        text: qsTr("Demo")
                         svg: "./../../icons/Google icons/settings.svg"
 
                         onClicked: {
-                            root.tabChanged("Demo page")
+                            root.tabChanged("Demo Page")
                         }
                     }
 
@@ -123,7 +123,7 @@ Item {
                 svg: "./../../icons/Google icons/settings.svg"
 
                 onClicked: {
-                    root.tabChanged("Settings page")
+                    root.tabChanged("Settings Page")
                 }
             }
 
@@ -146,7 +146,7 @@ Item {
                 svg: "./../../icons/Google icons/help.svg"
 
                 onClicked: {
-                    root.tabChanged("About page")
+                    root.tabChanged("About Page")
                 }
             }
         }

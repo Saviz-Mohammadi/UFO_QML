@@ -16,18 +16,14 @@ int main(int argc, char *argv[])
     readCustomFonts(application);
     setGlobalFont(application);
 
-    // You may face issues when using Wayland.
+    // WARNING (SAVIZ): This function does not work correctly under Wayland.
     QGuiApplication::setWindowIcon(QIcon("./resources/icons/Application icons/ufo.png"));
 
-    // Load main.qml to start the engine. (Relative path from executable)
     engine.load("./resources/qml/main.qml");
 
-    // Launch Event loop.
     return application.exec();
 }
 
-
-// You can register your C++ types to be visible to QML here.
 void registerTypes()
 {
     qmlRegisterSingletonType<AppTheme>("AppTheme", 1, 0, "AppTheme", &AppTheme::qmlInstance);
@@ -59,7 +55,6 @@ void chooseFirstTheme()
 
 void readCustomFonts(const QGuiApplication &application)
 {
-    // Path to font files.
     QStringList fontPaths;
 
     fontPaths << "./resources/fonts/Titillium_Web/TitilliumWeb-Black.ttf"
@@ -74,7 +69,6 @@ void readCustomFonts(const QGuiApplication &application)
               << "./resources/fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf"
               << "./resources/fonts/Titillium_Web/TitilliumWeb-SemiBoldItalic.ttf";
 
-    // Looping through each font file.
     foreach (const QString &fontPath, fontPaths)
     {
         int fontId = QFontDatabase::addApplicationFont(fontPath);
@@ -84,9 +78,7 @@ void readCustomFonts(const QGuiApplication &application)
 #ifdef QT_DEBUG
             QString message("Failed to load font file: %1");
 
-            message = message.arg(
-                fontPath
-            );
+            message = message.arg(fontPath);
 
             logger::log(logger::LOG_LEVEL::DEBUG, "N/A", Q_FUNC_INFO, message);
 #endif
@@ -96,20 +88,13 @@ void readCustomFonts(const QGuiApplication &application)
 
 void setGlobalFont(const QGuiApplication &application)
 {
-    // The name is automatically set by Qt and depends on the metadata of the file.
-    // Refer to Google Fonts to find out the correct name to use.
+    // NOTE (SAVIZ): The name is automatically set by Qt and depends on the metadata of the file. Refer to "Google Fonts" to find out the correct name to use.
     QString fontFamilyName = "Titillium Web";
 
 
-    // Check if the font family is available.
     if (QFontDatabase::families().contains(fontFamilyName))
     {
-        // Font family is available, use it
-        QFont customFont(
-
-            fontFamilyName,
-            10
-        );
+        QFont customFont(fontFamilyName, 10);
 
         QGuiApplication::setFont(customFont);
     }
@@ -119,9 +104,7 @@ void setGlobalFont(const QGuiApplication &application)
 #ifdef QT_DEBUG
         QString message("Font family %1 is not available.");
 
-        message = message.arg(
-            fontFamilyName
-        );
+        message = message.arg(fontFamilyName);
 
         logger::log(logger::LOG_LEVEL::DEBUG, "N/A", Q_FUNC_INFO, message);
 #endif
