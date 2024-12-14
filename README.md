@@ -7,7 +7,7 @@ UFO_QML is a straightforward CMake template project designed to kickstart QML de
 
 Before using this template, ensure your development environment meets the following requirements:
 ```diff
-Qt                            (Minimum version required: 6.7)
+Qt                            (Recommended version required: 6.73)
 Qt-CMake                      (Minimum version required: 3.16)
 Qt-Compiler                   (MSVC, MinGW, GCC, Clang/LLVM, ...)
 ```
@@ -35,10 +35,8 @@ sudo apt install libglx-dev libgl1-mesa-dev
 
 Once you successfully download the project, you can start using the template with the QtCreator IDE. To open the project follow the steps below:
 ```diff
-File Menu >> Open File or Project... >> "Path/To/CMakeLists.txt"
+File Menu >> Open File or Project... >> select "Path/To/CMakeLists.txt"
 ```
-
-For a smooth experience with QtCreator IDE, ensure you configure your build directory as specified in the template.
 
 
 ## License
