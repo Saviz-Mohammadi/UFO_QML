@@ -31,7 +31,7 @@ UFO_Page {
 
             color: Qt.color(AppTheme.colors["UFO_GroupBox_Content_Text"])
 
-            text: qsTr("Name: UFO_QML") + "     " + qsTr("Version: 0.1.1")
+            text: qsTr("Name: UFO_QML") + "     " + qsTr("Version: 0.0.1")
 
             wrapMode: Text.Wrap
             elide: Text.ElideRight
